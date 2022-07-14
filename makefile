@@ -6,5 +6,9 @@ MarkdownParseTest.class: MarkdownParseTest.java MarkdownParse.class
 MarkdownParse.class: MarkdownParse.java
 	javac -g -cp $(CLASSPATH) MarkdownParse.java
 
-test: MarkdownParseTest.class
-	java -cp $(CLASSPATH) org.junit.runner.JUnitCore MarkdownParseTest 
+# test: MarkdownParseTest.class
+# 	java -cp $(CLASSPATH) org.junit.runner.JUnitCore MarkdownParseTest 
+	
+test: MarkdownParse.java MarkdownParseTest.java
+	javac -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar MarkdownParseTest.java MarkdownParse.java
+	java -cp .:lib/junit-4.13.2.jar:lib/hamcrest-core-1.3.jar org.junit.runner.JUnitCore MarkdownParseTest

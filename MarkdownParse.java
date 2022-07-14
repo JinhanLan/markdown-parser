@@ -48,6 +48,7 @@ public class MarkdownParse {
             return result;
         }
     }
+    
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();
         // find the next [, then find the ], then find the (, then take up to
@@ -58,7 +59,7 @@ public class MarkdownParse {
             int nextCodeBlock = markdown.indexOf("\n```");
             if(nextCodeBlock < nextOpenBracket && nextCodeBlock != -1) {
                 int endOfCodeBlock = markdown.indexOf("\n```");
-                currentIndex = endOfCodeBlock + 1;
+                currentIndex = endOfCodeBlock; //+ 1;
                 continue;
             }
             int nextCloseBracket = markdown.indexOf("]", nextOpenBracket);
